@@ -10,10 +10,13 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+ useEffect(() => {
+  // Intentional: this is the standard next-themes hydration guard —
+  // we can't know the real theme until after mount, so exactly one
+  // extra render here is expected and unavoidable.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  setMounted(true);
+}, []);
   if (!mounted) {
     return <Button variant="ghost" size="icon" disabled aria-hidden />;
   }
