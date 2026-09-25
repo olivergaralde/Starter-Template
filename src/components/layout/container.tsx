@@ -1,21 +1,21 @@
 import { cn } from "@/lib/utils";
-import type { HTMLAttributes } from "react";
 
-interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+interface ContainerProps extends React.ComponentProps<"div"> {
+  as?: React.ElementType;
 }
 
 export function Container({
-  children,
+  as: Component = "div",
   className,
+  children,
   ...props
 }: ContainerProps) {
   return (
-    <div
+    <Component
       className={cn("mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8", className)}
       {...props}
     >
       {children}
-    </div>
+    </Component>
   );
 }

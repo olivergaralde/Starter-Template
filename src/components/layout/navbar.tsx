@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +28,7 @@ export function Navbar() {
       <Container>
         <nav className="flex h-16 items-center justify-between">
           <Link href="/" className="font-semibold">
-            Starter Template
+            {siteConfig.name}
           </Link>
 
           {/* Desktop navigation */}
@@ -40,6 +42,7 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile navigation */}
@@ -53,10 +56,10 @@ export function Navbar() {
 
               <SheetContent>
                 <SheetHeader>
-                  <SheetTitle>Site Name</SheetTitle>
+                  <SheetTitle>{siteConfig.name}</SheetTitle>
                 </SheetHeader>
 
-                <div className="flex flex-col gap-4 px-4">
+                <div className="flex flex-col gap-4 px-4 ">
                   {navigation.map((item) => (
                     <Link
                       key={item.href}
@@ -65,7 +68,8 @@ export function Navbar() {
                     >
                       {item.label}
                     </Link>
-                  ))}
+                  ))} 
+                  <ThemeToggle />
                 </div>
               </SheetContent>
             </Sheet>

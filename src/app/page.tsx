@@ -1,14 +1,16 @@
 import { Container } from "@/components/layout/container";
+import { siteConfig } from "@/config/site";
 
 export default function Home() {
   return (
+    
     <Container>
+      
       <section className="flex min-h-[60vh] items-center justify-center py-16">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Starter Template
+            {siteConfig.name}
           </h1>
-
           <p className="mt-4 text-muted-foreground">
             Start building.
           </p>
